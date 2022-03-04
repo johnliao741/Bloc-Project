@@ -30,7 +30,7 @@ class LoginPageState extends State<LoginPage> {
   }
 
   Widget _buildPage(BuildContext context) {
-    final bloc = BlocProvider.of<LoginBloc>(context);
+    final loginBloc = BlocProvider.of<LoginBloc>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("LoginPage"),
@@ -38,7 +38,7 @@ class LoginPageState extends State<LoginPage> {
           IconButton(
             icon: Icon(Icons.logout),
             onPressed: () {
-              bloc.add(LogoutAccountEvent());
+              loginBloc.add(LogoutAccountEvent());
             },
           )
         ],
@@ -73,7 +73,7 @@ class LoginPageState extends State<LoginPage> {
                     if ((_formKey.currentState as FormState).validate()) {
                       // context.read<LoginBloc>().add(LoginAccountEvent(
                       //     accController.value.text, passController.value.text));
-                      bloc.add(LoginAccountEvent(
+                      loginBloc.add(LoginAccountEvent(
                           accController.value.text, passController.value.text));
                     }
                   },
